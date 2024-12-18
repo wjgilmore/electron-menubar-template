@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.95);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            user-select: none;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            opacity: 0.6;
+            font-size: 16px;
+        }
+        .close-btn:hover {
+            opacity: 1;
+        }
+        a {
+            color: #64D2FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="close-btn" onclick="window.close()">×</div>
+    <p>
+        THIS APP was created by W. Jason Gilmore. Learn more about it and other fun menubar apps at
+        <a href="#" onclick="openLink('https://usefulmenubarapps.com')">https://usefulmenubarapps.com</a>.
+    </p>
+
+    <script>
+        const { shell } = require('electron');
+
+        function openLink(url) {
+            shell.openExternal(url);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 8px;
+            background-color: rgba(30, 30, 30, 0.95);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            border-radius: 5px;
+            user-select: none;
+            font-size: 12px;
+        }
+        .menu-item {
+            padding: 4px 5px;
+            margin: 1px 0;
+            cursor: default;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 16px;
+        }
+        .separator {
+            height: 1px;
+            background-color: #444;
+            margin: 4px 0;
+        }
+        .clickable {
+            cursor: pointer;
+        }
+        .clickable:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        .delete-btn {
+            opacity: 0.6;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+        .delete-btn:hover {
+            opacity: 1;
+        }
+        #cities-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .checkbox {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+        }
+        .checkbox.checked::after {
+            content: '✓';
+            font-size: 9px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="separator"></div>
+    <div class="menu-item clickable" onclick="toggleLaunchAtLogin()">
+        <span>Launch at login</span>
+        <div id="launch-checkbox" class="checkbox"></div>
+    </div>
+    <div class="separator"></div>
+    <div class="menu-item clickable" onclick="showAbout()">About...</div>
+    <div class="menu-item clickable" onclick="quit()">Quit</div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+
+        // Handle launch at login checkbox
+        ipcRenderer.on('launch-at-login-status', (event, enabled) => {
+            const checkbox = document.getElementById('launch-checkbox');
+            if (enabled) {
+                checkbox.classList.add('checked');
+            } else {
+                checkbox.classList.remove('checked');
+            }
+        });
+
+        function toggleLaunchAtLogin() {
+            ipcRenderer.send('toggle-launch-at-login');
+        }
+
+        function showAbout() {
+            ipcRenderer.send('show-about');
+        }
+
+
+        function quit() {
+            ipcRenderer.send('quit-app');
+        }
+
+        // Request initial launch at login status
+        ipcRenderer.send('get-launch-at-login-status');
+    </script>
+</body>
+</html>
