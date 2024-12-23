@@ -1,19 +1,11 @@
-# Timezone Clock Menubar App
+# Electron Menubar App Template
 
 ## Installation
 
-1. Clone the repository
+1. Clone the repository into a folder
 2. Run `npm install`
 3. Run `npm run build`
 4. Run `npm run start`
-
-## Settings
-
-The settings are stored in the `settings.json` file.
-
-## Cities
-
-The cities are stored in the `cities.json` file. You can add or remove cities from this file to customize the app.
 
 ## The App Icon
 
@@ -39,10 +31,4 @@ Presuming you see the correct certificates, build the app with:
 
 ```
 $ npm run make
-```
-
-You can confirm an installed app was correctly signed with:
-
-```
-$ codesign -dvvv timezones.app
 ```

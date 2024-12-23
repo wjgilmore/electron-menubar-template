@@ -97,8 +97,6 @@ function createTray() {
 
   tray.on('click', toggleWindow);
 
-  updateTimes();
-  setInterval(updateTimes, 60000);
 }
 
 function updateLoginSettings() {

@@ -1,5 +1,5 @@
 {
-  "name": "timezones",
+  "name": "template",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
@@ -9,14 +9,11 @@
     "make": "electron-forge make"
   },
   "keywords": [
-    "electron",
-    "menubar",
-    "clock",
-    "timezone"
+    "electron"
   ],
   "author": "WJ Gilmore, LLC",
   "license": "ISC",
-  "description": "Easily view multiple timezones from your menubar.",
+  "description": "A template for an Electron menubar app.",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
     "electron-store": "^8.1.0"
